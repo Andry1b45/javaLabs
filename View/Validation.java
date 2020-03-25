@@ -12,6 +12,14 @@ public class Validation {
         return true;
     }
 
+    static boolean checkPatientsAmmount(int ammount){
+        if( ammount <= 0 || ammount >= 1001){
+            System.out.println("Wrong key! Try again!\n");
+            return false;
+        }
+        return true;
+    }
+
     static boolean checkDiagnosisKey(int key){
         if( 0 > key || key > 10){
             System.out.println("Wrong key! Try again!\n");

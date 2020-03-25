@@ -31,16 +31,17 @@ public class Input {
         return -1;
     }
 
-
     public int ammountOfPatients() {
         int ammount = 0;
         System.out.println("How much patients do you want to create?");
         try {
             ammount = Integer.parseInt(inputData());
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Error! Input another key\n");
+            return -1;
         }
-        return ammount;
+        if(Validation.checkPatientsAmmount(ammount)) return ammount;
+        return -1;
     }
 
     public int getDiagnosisKey() {
@@ -72,5 +73,4 @@ public class Input {
         }while (!(Validation.checkRangeKeys(arr[0], arr[1])));
         return arr;
     }
-
 }

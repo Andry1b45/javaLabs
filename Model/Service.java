@@ -6,7 +6,6 @@ public class Service {
     private static Patient[] patients = new Patient[1000];
     private static int counter  = 0;
 
-
     public static Patient[] getPatients(){
         return patients;
     }
@@ -53,5 +52,4 @@ public class Service {
         }
         return patientsMedCard;
     }
-
 }

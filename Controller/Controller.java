@@ -17,13 +17,11 @@ public class Controller {
         this.service = new Service();
     }
 
-
     public void run(){
         run = true;
         while (run == true){
-            Output.showMenu();
-            int caseVariable = input.menu();
-            execute(caseVariable);
+            output.showMenu();
+            execute(input.menu());
         }
     }
 
@@ -56,5 +54,4 @@ public class Controller {
                 break;
         }
     }
-
 }

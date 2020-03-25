@@ -13,6 +13,7 @@ public class Output {
         for(int i = 0; i < Service.getCounter(); i++) {
             if(patients[i] != null) {
                 System.out.println(patients[i]);
+                z++;
             }
         }
         if(z==0) System.out.println("No patients to show!\n");
@@ -35,5 +36,4 @@ public class Output {
         System.out.println("5. Exit");
         System.out.println("Input: ");
     }
-
 }

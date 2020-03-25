@@ -36,7 +36,6 @@ public class Patient {
                 + "\nDiagnosis: " + Diagnosis + "\n\n";
     }
 
-
     public String getDiagnosis() {
         return Diagnosis;
     }
