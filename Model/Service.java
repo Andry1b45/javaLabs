@@ -6,7 +6,7 @@ public class Service {
     private static Patient[] patients = new Patient[1000];
     private static int counter  = 0;
 
-    public static Patient[] getPatients(){
+    public Patient[] getPatients(){
         return patients;
     }
 
@@ -14,14 +14,14 @@ public class Service {
         return counter;
     }
 
-    public static void createPatients(int n){
+    public void createPatients(int n){
         for(int i = 0; i < n ; i++){
             patients[counter] = new Patient(counter);
             counter++;
         }
     }
 
-    public static Patient[] showPatientsWithDiagnosis(int n){
+    public Patient[] showPatientsWithDiagnosis(int n){
         Patient[] patientsDiagnosis = new Patient[1000];
         int z = 0;
         if (counter != 0) {
@@ -39,7 +39,7 @@ public class Service {
         }
     }
 
-    public static Patient[] showPatientsWithMedCard(int[] arr){
+    public Patient[] showPatientsWithMedCard(int[] arr){
         Patient[] patientsMedCard = new Patient[1000];
         int z = 0;
         for (int i = 0; i < (arr[1]); i++) {

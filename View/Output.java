@@ -27,7 +27,7 @@ public class Output {
         System.out.println("\n");
     }
 
-    public  static void showMenu(){
+    public void showMenu(){
         System.out.println("\tMenu\n");
         System.out.println("1. Create patients");
         System.out.println("2. Show all patients");

@@ -7,7 +7,7 @@ public class Input {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private int key;
 
-    public static String inputData() throws IOException {
+    public String inputData() throws IOException {
         String data = reader.readLine();
         return data;
     }
