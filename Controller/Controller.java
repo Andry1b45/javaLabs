@@ -4,12 +4,10 @@ import com.kpi.javaLabs.Model.Service;
 import com.kpi.javaLabs.View.Input;
 import com.kpi.javaLabs.View.Output;
 
-
 public class Controller {
     private Input input;
     private Output output;
     private Service service;
-    private boolean run;
 
     public Controller(){
         this.input = new Input();
@@ -18,8 +16,7 @@ public class Controller {
     }
 
     public void run(){
-        run = true;
-        while (run == true){
+        while (true){
             output.showMenu();
             execute(input.menu());
         }
@@ -28,6 +25,7 @@ public class Controller {
     private void execute(int caseVariable){
         switch (caseVariable) {
             case 1:{
+                System.out.println("How much patients do you want to create?");
                 service.createPatients(input.ammountOfPatients());
                 output.showAllPatients(service.getPatients());
                 break;
@@ -37,17 +35,17 @@ public class Controller {
                 break;
             }
             case 3:{
-                output.showDiagnosisList();
-                output.showAllPatients(service.showPatientsWithDiagnosis(input.getDiagnosisKey()));
+                output.showDiagnosisList(service.getDiagnosisList());
+                output.showAllPatients(service.getPatientsWithDiagnosis(input.getDiagnosis()));
                 break;
             }
             case 4:{
-                output.showAllPatients(service.showPatientsWithMedCard(input.getIdRange()));
+                output.showAllPatients(service.getPatientsWithMedCard(input.getIdRange()));
                 break;
             }
             case 5:{
                 System.out.println("Goodbye");
-                run = false;
+                System.exit(1);
                 break;
             }
             default:

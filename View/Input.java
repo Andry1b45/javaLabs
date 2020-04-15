@@ -1,76 +1,62 @@
 package com.kpi.javaLabs.View;
-
-import java.io.*;
+import java.util.Scanner;
 
 public class Input {
 
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static Scanner scanner = new Scanner(System.in);
     private int key;
+    private String diagnosis;
 
-    public String inputData() throws IOException {
-        String data = reader.readLine();
+    public String inputData() {
+        String data = scanner.nextLine();
         return data;
     }
 
     public int menu() {
         key = 0;
         do {
-            getMenuKey();
+            if(key == -1)
+                Output.showError();
+            key = getMenuKey();
         } while (key == -1);
         return key;
     }
 
     private int getMenuKey() {
-        try {
-            key = Integer.parseInt(inputData());
-        } catch (Exception e) {
-            System.out.println("Error! Input another key\n");
-            return -1;
-        }
+        key = Integer.parseInt(inputData());
         if (Validation.checkMenuKey(key)) return key;
         return -1;
     }
 
     public int ammountOfPatients() {
-        int ammount = 0;
-        System.out.println("How much patients do you want to create?");
-        try {
-            ammount = Integer.parseInt(inputData());
-        } catch (Exception e) {
-            System.out.println("Error! Input another key\n");
-            return -1;
-        }
-        if(Validation.checkPatientsAmmount(ammount)) return ammount;
+        int patientsAmmount = 0;
+        patientsAmmount = Integer.parseInt(inputData());
+        if(Validation.checkPatientsAmmount(patientsAmmount)) return patientsAmmount;
         return -1;
     }
 
-    public int getDiagnosisKey() {
+    public String getDiagnosis() {
         do {
-            try {
-                key = Integer.parseInt(inputData());
-            } catch (Exception e) {
-                System.out.println("Error! Input another key\n");
-                return -1;
-            }
-        }while (!(Validation.checkDiagnosisKey(key)));
-            return key;
+            diagnosis = inputData();
+        }while (!(Validation.checkDiagnosis(diagnosis)));
+            return diagnosis;
     }
 
     public int[] getIdRange() {
-        int[] arr = {0 , 0};
+        int[] rangeArray = {0 , 0};
+        int errorCounter = 0;
         do{
-            arr[0] = 0; arr[1] = 0;
-            try {
-                while (arr[0] == 0 || arr[1] == 0){
-                    System.out.println("Input first number: ");
-                    arr[0] = Integer.parseInt(inputData());
-                    System.out.println("Input second number: ");
-                    arr[1] = Integer.parseInt(inputData());
-                }
-            } catch (Exception e) {
-                System.out.println("Input keys:");
+            rangeArray[0] = 0; rangeArray[1] = 0;
+            if (errorCounter == 3)
+                break;
+            while (rangeArray[0] == 0 || rangeArray[1] == 0){
+                Output.showInputMessage();
+                rangeArray[0] = Integer.parseInt(inputData());
+                Output.showInputMessage();
+                rangeArray[1] = Integer.parseInt(inputData());
             }
-        }while (!(Validation.checkRangeKeys(arr[0], arr[1])));
-        return arr;
+            errorCounter++;
+        }while (!(Validation.checkRangeKeys(rangeArray[0], rangeArray[1])));
+        return rangeArray;
     }
 }

@@ -56,7 +56,7 @@ public class DataSource {
         return Diagnosis[randInt];
     }
 
-    public String getDiagnosis(int n){
-        return  Diagnosis[n];
+    public String[] getDiagnosis(){
+        return  Diagnosis;
     }
 }
