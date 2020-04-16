@@ -26,14 +26,9 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "|Patient ID:  " + Id
-                + " | Surname:  " + Surname
-                + " | Name:  " + Name
-                + " | Patronymic:  " + Patronymic
-                + " | Address:  " + Address
-                + " | Phone:  " + Phone
-                + " | MedCard Number:  " + MedCardNum
-                + " | Diagnosis:  " + Diagnosis + "";
+        return String.format( "|Patient ID: %-3d | Surname: %-8s | Name: %-7s | Patronymic: %-15s |" +
+                " Address: %-15s | Phone: %-13s | MedCard Number: %-3d | Diagnosis: %-14s |",
+                Id, Surname, Name, Patronymic, Address, Phone, MedCardNum, Diagnosis);
     }
 
     public String getDiagnosis() {

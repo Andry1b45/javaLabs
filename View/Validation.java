@@ -1,34 +1,48 @@
 package com.kpi.javaLabs.View;
 
 import com.kpi.javaLabs.Model.Service;
+import com.kpi.javaLabs.Exceptions.*;
 
 public class Validation {
 
-    static boolean checkMenuKey(int key){
-        if( 0 > key || key > 4){
-            return false;
+    static void checkMenuKey(String keyString) throws WrongNumberException{
+        if(keyString.matches("\\d+")){
+            int key = Integer.parseInt(keyString);
+            if( 0 > key || key > 4){
+                throw new WrongNumberException("Error, wrong key!");
+            }
         }
-        return true;
+        else{
+            throw new WrongNumberException("Error, dont use letters!");
+        }
     }
 
-    public static boolean checkPatientsAmmount(int ammount){
-        if( ammount <= 0 || ammount >= 1001){
-            return false;
+    static void checkPatientsAmmount(String ammountString) throws WrongNumberException {
+        if (ammountString.matches("\\d+")) {
+            int ammount = Integer.parseInt(ammountString);
+            if (ammount <= 0 || ammount >= 1001) {
+                throw new WrongNumberException("Error, wrong ammount!");
+            }
         }
-        return true;
+        else{
+            throw new WrongNumberException("Error, dont use letters!");
+        }
     }
 
-    static boolean checkDiagnosis(String diagnosis){        //todo сделать проверку через передачу словаря диагнозов
+    static void checkDiagnosis(String diagnosis) throws WrongTextException{
         if(diagnosis.equals("")){
-            return false;
+            throw new WrongTextException("Diagnosis is empty!");
         }
-        return true;
+        else if(diagnosis.matches("\\d+")){
+            throw new WrongTextException("Do not use numbers!");
+        }
     }
 
-    static boolean checkRangeKeys(int a, int b){
-        if( a <= 0 || b <=0 || a > Service.getPatientsAmmount() ||  b > Service.getPatientsAmmount()|| a-b >= 0 ){
-            return false;
+    static void checkRangeKeys(int a, int b) throws WrongNumberException{
+        System.out.println(Service.getPatientsAmmount());
+        if( a <= 0 || b <=0 || a > Service.getPatientsAmmount() ||
+                b > Service.getPatientsAmmount()|| a-b >= 0 ){
+            throw new WrongNumberException("Error, input another numbers!");
         }
-        else return true;
     }
 }

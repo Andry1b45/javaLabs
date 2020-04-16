@@ -30,7 +30,7 @@ public class Service {
 
     public Patient[] getPatientsWithDiagnosis(String diagnosis ){
         Patient[] patientsDiagnosis = new Patient[patientsAmmount+1];
-        if(validator.checkPatientsAmmount(patientsAmmount)){
+        if(patientsAmmount>0 && patientsAmmount<1000){
         int currentPatientCounter = 0;
             for (int i = 0; i < patientsAmmount; i++) {
                 if (patients[i].getDiagnosis().equals(diagnosis)) {
