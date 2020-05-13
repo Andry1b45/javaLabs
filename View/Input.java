@@ -1,6 +1,6 @@
 package com.kpi.javaLabs.View;
 import java.util.Scanner;
-import com.kpi.javaLabs.Exceptions.*;
+import com.kpi.javaLabs.View.Exceptions.*;
 
 public class Input {
 

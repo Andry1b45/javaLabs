@@ -1,16 +1,17 @@
 package com.kpi.javaLabs.Model;
 
-import com.kpi.javaLabs.View.Validation;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class Service {
 
     private static DataSource data = new DataSource();
-    private static Validation validator = new Validation();
     private static Patient[] patients = new Patient[1000];
     private static int patientsAmmount = 0;
 
     public Patient[] getPatients(){
-        return patients;
+        return Arrays.copyOf(patients, patientsAmmount);
     }
 
     public static int getPatientsAmmount(){

@@ -1,11 +1,11 @@
 package com.kpi.javaLabs.View;
 
 import com.kpi.javaLabs.Model.Service;
-import com.kpi.javaLabs.Exceptions.*;
+import com.kpi.javaLabs.View.Exceptions.*;
 
 public class Validation {
 
-    static void checkMenuKey(String keyString) throws WrongNumberException{
+    static void checkMenuKey(String keyString){
         if(keyString.matches("\\d+")){
             int key = Integer.parseInt(keyString);
             if( 0 > key || key > 4){
@@ -17,7 +17,7 @@ public class Validation {
         }
     }
 
-    static void checkPatientsAmmount(String ammountString) throws WrongNumberException {
+    static void checkPatientsAmmount(String ammountString){
         if (ammountString.matches("\\d+")) {
             int ammount = Integer.parseInt(ammountString);
             if (ammount <= 0 || ammount >= 1001) {
@@ -29,7 +29,7 @@ public class Validation {
         }
     }
 
-    static void checkDiagnosis(String diagnosis) throws WrongTextException{
+    static void checkDiagnosis(String diagnosis){
         if(diagnosis.equals("")){
             throw new WrongTextException("Diagnosis is empty!");
         }
@@ -38,7 +38,7 @@ public class Validation {
         }
     }
 
-    static void checkRangeKeys(int a, int b) throws WrongNumberException{
+    static void checkRangeKeys(int a, int b){
         System.out.println(Service.getPatientsAmmount());
         if( a <= 0 || b <=0 || a > Service.getPatientsAmmount() ||
                 b > Service.getPatientsAmmount()|| a-b >= 0 ){

@@ -6,21 +6,14 @@ import com.kpi.javaLabs.Model.Service;
 public class Output {
 
     public void showAllPatients(Patient[] patients){
-        if(patients[0] == null){
-            System.out.println("No patients to show!");
-        }
-        else {
+        System.out.println(" ___________________________________________________" +
+                    "_________________________________________________________________" +
+                    "_________________________________________________________________\n");
+        for (Patient patientCounter: patients) {
+            System.out.println(patientCounter);
             System.out.println(" ___________________________________________________" +
                     "_________________________________________________________________" +
                     "_________________________________________________________________\n");
-            for (int i = 0; i < Service.getPatientsAmmount(); i++) {
-                if (patients[i] != null) {
-                    System.out.println(patients[i]);
-                    System.out.println(" ___________________________________________________" +
-                            "_________________________________________________________________" +
-                            "_________________________________________________________________\n");
-                }
-            }
         }
     }
 
