@@ -1,12 +1,9 @@
 package com.kpi.javaLabs.Model;
 
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Service {
 
-    private static DataSource data = new DataSource();
     private static Patient[] patients = new Patient[1000];
     private static int patientsAmmount = 0;
 
@@ -19,18 +16,21 @@ public class Service {
     }
 
     public String[] getDiagnosisList(){
-        return data.getDiagnosis();
+        return Patient.getDiagnosisList();
     }
 
     public void createPatients(int ammount){
-        for(int i = 0; i < ammount ; i++){
-            patients[patientsAmmount] = new Patient(patientsAmmount);
-            patientsAmmount++;
+        if (ammount != 0){
+            for (int i = 0; i < ammount; i++) {
+                patients[patientsAmmount] = new Patient(patientsAmmount);
+                patientsAmmount++;
+            }
         }
     }
 
-    public Patient[] getPatientsWithDiagnosis(String diagnosis ){
-        Patient[] patientsDiagnosis = new Patient[patientsAmmount+1];
+    public Patient[] getPatientsWithDiagnosis(String diagnosis){
+        Patient[] patientsDiagnosis = new Patient[patientsAmmount];
+        Patient[] finalPatients = new Patient[1];
         if(patientsAmmount>0 && patientsAmmount<1000){
         int currentPatientCounter = 0;
             for (int i = 0; i < patientsAmmount; i++) {
@@ -39,12 +39,14 @@ public class Service {
                     currentPatientCounter++;
                 }
             }
+            finalPatients = new Patient[currentPatientCounter];
+            System.arraycopy(patientsDiagnosis, 0 , finalPatients, 0, currentPatientCounter);
         }
-        return patientsDiagnosis;
+        return finalPatients;
     }
 
     public Patient[] getPatientsWithMedCard(int[] ranges){
-        Patient[] patientsMedCard = new Patient[1000];
+        Patient[] patientsMedCard = new Patient[patientsAmmount];
         if(ranges[0]!=0 && ranges[1] != 0){
             int currentCardCounter = 0;
             for (int i = 0; i < (ranges[1]); i++) {

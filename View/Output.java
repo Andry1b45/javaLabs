@@ -1,7 +1,6 @@
 package com.kpi.javaLabs.View;
 
 import com.kpi.javaLabs.Model.Patient;
-import com.kpi.javaLabs.Model.Service;
 
 public class Output {
 
@@ -15,6 +14,10 @@ public class Output {
                     "_________________________________________________________________" +
                     "_________________________________________________________________\n");
         }
+    }
+
+    public static void showError(Exception e){
+        System.err.println(e.getMessage());
     }
 
 

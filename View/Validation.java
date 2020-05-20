@@ -8,7 +8,7 @@ public class Validation {
     static void checkMenuKey(String keyString){
         if(keyString.matches("\\d+")){
             int key = Integer.parseInt(keyString);
-            if( 0 > key || key > 4){
+            if( 0 > key || key > 5){
                 throw new WrongNumberException("Error, wrong key!");
             }
         }

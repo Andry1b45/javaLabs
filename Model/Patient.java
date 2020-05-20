@@ -1,5 +1,7 @@
 package com.kpi.javaLabs.Model;
 
+import javax.xml.crypto.Data;
+
 public class Patient {
 
     private int Id;
@@ -11,7 +13,8 @@ public class Patient {
     private int MedCardNum;
     private String Diagnosis;
 
-    private DataSource data = new DataSource();
+    private static DataSource data = new DataSource();
+    private static String[] DiagnosisList = data.getDiagnosis();
 
     public Patient(int counter){
         this.Id = data.getRandId();
@@ -29,6 +32,10 @@ public class Patient {
         return String.format( "|Patient ID: %-3d | Surname: %-8s | Name: %-7s | Patronymic: %-15s |" +
                 " Address: %-15s | Phone: %-13s | MedCard Number: %-3d | Diagnosis: %-14s |",
                 Id, Surname, Name, Patronymic, Address, Phone, MedCardNum, Diagnosis);
+    }
+
+    public static String[] getDiagnosisList(){
+        return DiagnosisList;
     }
 
     public String getDiagnosis() {

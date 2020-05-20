@@ -28,7 +28,7 @@ public class Input {
             Validation.checkMenuKey(keyString);
         }
         catch (WrongNumberException e){
-            System.err.println(e.getMessage());
+            Output.showError(e);
             return ERROR_KEY;
         }
         key = Integer.parseInt(keyString);
@@ -41,7 +41,7 @@ public class Input {
             Validation.checkPatientsAmmount(ammountString);
         }
         catch (WrongNumberException e){
-            System.err.println(e.getMessage());
+            Output.showError(e);
             return ERROR_KEY;
         }
         int patientsAmmount = Integer.parseInt(ammountString);
@@ -55,7 +55,7 @@ public class Input {
                 Validation.checkDiagnosis(diagnosis);
             }
             catch(WrongTextException e){
-                System.err.println(e.getMessage());
+                Output.showError(e);
             }
             break;
         }
@@ -78,7 +78,7 @@ public class Input {
             catch (WrongNumberException e){
                 rangeArray[0] = 0;
                 rangeArray[1] = 0;
-                System.err.println(e.getMessage());
+                Output.showError(e);
             }
             break;
         }
