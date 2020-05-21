@@ -5,7 +5,28 @@ import java.util.Arrays;
 public class Service {
 
     private static Patient[] patients = new Patient[1000];
-    private static int patientsAmmount = 0;
+    private static FileHandler fileHandler = new FileHandler();
+    private static int patientsAmmount;
+
+    public Service(){
+        Patient[] readedArray = fileHandler.importFromFile();
+        patientsAmmount = fileHandler.getImportedAmmount();
+        System.arraycopy(readedArray, 0, patients, 0, patientsAmmount);
+    }
+
+
+    public void createPatients(int ammount){
+        if (ammount != 0){
+            for (int i = 0; i < ammount; i++) {
+                patients[patientsAmmount] = new Patient(patientsAmmount);
+                patientsAmmount++;
+            }
+        }
+    }
+
+    public void exportToFile(){
+        fileHandler.exportToFile(patientsAmmount, patients);
+    }
 
     public Patient[] getPatients(){
         return Arrays.copyOf(patients, patientsAmmount);
@@ -17,15 +38,6 @@ public class Service {
 
     public String[] getDiagnosisList(){
         return Patient.getDiagnosisList();
-    }
-
-    public void createPatients(int ammount){
-        if (ammount != 0){
-            for (int i = 0; i < ammount; i++) {
-                patients[patientsAmmount] = new Patient(patientsAmmount);
-                patientsAmmount++;
-            }
-        }
     }
 
     public Patient[] getPatientsWithDiagnosis(String diagnosis){
@@ -60,4 +72,6 @@ public class Service {
         }
         return patientsMedCard;
     }
+
+
 }

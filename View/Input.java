@@ -35,7 +35,7 @@ public class Input {
         return key;
     }
 
-    public int ammountOfPatients() {
+    public int getAmmountOfPatients() {
         String ammountString = inputData();
         try{
             Validation.checkPatientsAmmount(ammountString);

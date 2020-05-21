@@ -26,7 +26,7 @@ public class Controller {
         switch (caseVariable) {
             case 1:{
                 System.out.println("How much patients do you want to create?");
-                service.createPatients(input.ammountOfPatients());
+                service.createPatients(input.getAmmountOfPatients());
                 output.showAllPatients(service.getPatients());
                 break;
             }
@@ -45,6 +45,7 @@ public class Controller {
             }
             case 5:{
                 System.out.println("Goodbye");
+                service.exportToFile();
                 System.exit(1);
                 break;
             }
