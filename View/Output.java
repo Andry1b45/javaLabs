@@ -38,8 +38,8 @@ public class Output {
         System.out.println("5. Exit");
         System.out.println("Input: ");
     }
-    public static void showInputMessage(){
-        System.out.println("Input number:");
+    public void showMessage(String message){
+        System.out.println(message);
     }
 
 }

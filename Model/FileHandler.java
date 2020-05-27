@@ -11,8 +11,7 @@ public class FileHandler {
 
     Patient[] importFromFile(){
         Patient[] patients = new Patient[1000];
-        try {
-            FileReader fileReader = new FileReader(filePath);
+        try(FileReader fileReader = new FileReader(filePath)) {
             BufferedReader buffReader = new BufferedReader(fileReader);
 
             for(int i = 0; buffReader.read() != -1; i++){
@@ -33,12 +32,11 @@ public class FileHandler {
             buffReader.close();
         }
         catch (FileNotFoundException exc){
-            Output.showError(exc);
+            Output.showError(exc);      //todo передавать эти ошибки на сервис, а потом на контроллер
         }
         catch (IOException e){
             Output.showError(e);
         }
-
         Patient[] importedPatients = new Patient[importedAmmount];
         System.arraycopy(patients, 0, importedPatients, 0, importedAmmount);
         return importedPatients;
@@ -52,7 +50,7 @@ public class FileHandler {
             FileWriter fileWriter = new FileWriter(filePath, true);
             BufferedWriter buffWriter = new BufferedWriter(fileWriter);
 
-            for(int i = 0; i< ammountOfPatients; i++){
+            for(int i = 0; i < ammountOfPatients; i++){
                 String toWrite = " " + patients[i].getMedCardNum()+ " " + patients[i].getId() + " "
                         + patients[i].getSurname() + " " + patients[i].getName() + " "
                         + patients[i].getPatronymic() + " " + patients[i].getAddress() + " "
@@ -67,7 +65,6 @@ public class FileHandler {
         catch (IOException e){
             Output.showError(e);
         }
-
     }
 
     public int getImportedAmmount() {

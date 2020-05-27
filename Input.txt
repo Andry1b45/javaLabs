@@ -13,3 +13,18 @@
  8 415 Lynn Janet Veniaminovich Eight_st_8 088-888-88-88 Allergy
  9 251 Oakley Felicia Orestovich Park_st_13 055-555-55-55 Asthma
  10 812 Eaton Molly Lvovich Washington_st_1 088-888-88-88 Flu
+ 1 93 Oakley Bob Ulyanovich Park_st_13 044-444-44-44 Hypertension
+ 2 57 Norton Felicia Nikitich Main_View_st_77 099-999-99-99 Anxiety
+ 3 991 Johnson Bill Nikitich Eight_st_8 000-000-00-00 Anxiety
+ 4 385 Cason Felicia Ulyanovich Cedar_st_10 088-888-88-88 Osteoarthritis
+ 5 561 Cason Molly Orestovich Hill_st_13 055-555-55-55 Cancer
+ 1 93 Oakley Bob Ulyanovich Park_st_13 044-444-44-44 Hypertension
+ 2 57 Norton Felicia Nikitich Main_View_st_77 099-999-99-99 Anxiety
+ 3 991 Johnson Bill Nikitich Eight_st_8 000-000-00-00 Anxiety
+ 4 385 Cason Felicia Ulyanovich Cedar_st_10 088-888-88-88 Osteoarthritis
+ 5 561 Cason Molly Orestovich Hill_st_13 055-555-55-55 Cancer
+ 6 414 Durham Felicia Orestovich Oak_st_132 011-111-11-11 Pain_in_joint
+ 7 955 Morton Andrew Antonovich Eight_st_8 000-000-00-00 Hypertension
+ 8 415 Lynn Janet Veniaminovich Eight_st_8 088-888-88-88 Allergy
+ 9 251 Oakley Felicia Orestovich Park_st_13 055-555-55-55 Asthma
+ 10 812 Eaton Molly Lvovich Washington_st_1 088-888-88-88 Flu

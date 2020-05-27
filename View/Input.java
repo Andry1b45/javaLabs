@@ -5,6 +5,7 @@ import com.kpi.javaLabs.View.Exceptions.*;
 public class Input {
 
     private static Scanner scanner = new Scanner(System.in);
+    private static Output output = new Output();
     private int key;
     private final int ERROR_KEY = -1;
     private String diagnosis;
@@ -67,9 +68,9 @@ public class Input {
         while(true){
             rangeArray[0] = 0; rangeArray[1] = 0;
             while (rangeArray[0] == 0 || rangeArray[1] == 0){
-                Output.showInputMessage();
+                output.showMessage("Input number:");
                 rangeArray[0] = Integer.parseInt(inputData());
-                Output.showInputMessage();
+                output.showMessage("Input second number");
                 rangeArray[1] = Integer.parseInt(inputData());
             }
             try{

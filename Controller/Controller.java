@@ -7,7 +7,7 @@ import com.kpi.javaLabs.View.Output;
 public class Controller {
     private Input input;
     private Output output;
-    private Service service;
+    private Service service;        //todo обработать исключения проблемы чтения файла и вывести пользователю, что проблема
 
     public Controller(){
         this.input = new Input();
@@ -25,7 +25,7 @@ public class Controller {
     private void execute(int caseVariable){
         switch (caseVariable) {
             case 1:{
-                System.out.println("How much patients do you want to create?");
+                output.showMessage("How much patients do you want to create?");
                 service.createPatients(input.getAmmountOfPatients());
                 output.showAllPatients(service.getPatients());
                 break;
@@ -44,7 +44,7 @@ public class Controller {
                 break;
             }
             case 5:{
-                System.out.println("Goodbye");
+                output.showMessage("Goodbye");
                 service.exportToFile();
                 System.exit(1);
                 break;

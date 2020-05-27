@@ -14,7 +14,6 @@ public class Service {
         System.arraycopy(readedArray, 0, patients, 0, patientsAmmount);
     }
 
-
     public void createPatients(int ammount){
         if (ammount != 0){
             for (int i = 0; i < ammount; i++) {
@@ -25,7 +24,7 @@ public class Service {
     }
 
     public void exportToFile(){
-        fileHandler.exportToFile(patientsAmmount, patients);
+        fileHandler.exportToFile(patientsAmmount, patients);    //todo обрабатывать exception тут
     }
 
     public Patient[] getPatients(){
