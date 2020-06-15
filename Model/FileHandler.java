@@ -1,5 +1,4 @@
 package com.kpi.javaLabs.Model;
-import com.kpi.javaLabs.View.Output;
 
 import java.io.*;
 
@@ -9,11 +8,9 @@ public class FileHandler {
     private String filePath = "./src/com/kpi/javaLabs/Input.txt";
     private int importedAmmount = 0;
 
-    Patient[] importFromFile(){
+    Patient[] importFromFile() throws IOException {
         Patient[] patients = new Patient[1000];
-        try(FileReader fileReader = new FileReader(filePath)) {
-            BufferedReader buffReader = new BufferedReader(fileReader);
-
+        try( BufferedReader buffReader = new BufferedReader(new FileReader(filePath))) {
             for(int i = 0; buffReader.read() != -1; i++){
                 String readData = buffReader.readLine();
                 String[] formattedReadData = readData.split(" ");
@@ -29,27 +26,18 @@ public class FileHandler {
                 patients[i].setDiagnosis(formattedReadData[7]);
                 importedAmmount++;
             }
-            buffReader.close();
-        }
-        catch (FileNotFoundException exc){
-            Output.showError(exc);      //todo передавать эти ошибки на сервис, а потом на контроллер
-        }
-        catch (IOException e){
-            Output.showError(e);
         }
         Patient[] importedPatients = new Patient[importedAmmount];
         System.arraycopy(patients, 0, importedPatients, 0, importedAmmount);
         return importedPatients;
     }
 
-    void exportToFile(int ammountOfPatients, Patient[] patients){
+    void exportToFile(int ammountOfPatients, Patient[] patients) throws IOException {
         if(patients.length == 0){
             return;
         }
-        try {
-            FileWriter fileWriter = new FileWriter(filePath, true);
-            BufferedWriter buffWriter = new BufferedWriter(fileWriter);
-
+        try ( BufferedWriter buffWriter = new BufferedWriter(new FileWriter(filePath, true))){
+            buffWriter.write("");
             for(int i = 0; i < ammountOfPatients; i++){
                 String toWrite = " " + patients[i].getMedCardNum()+ " " + patients[i].getId() + " "
                         + patients[i].getSurname() + " " + patients[i].getName() + " "
@@ -57,17 +45,8 @@ public class FileHandler {
                         + patients[i].getPhone() + " " + patients[i].getDiagnosis() + "\n";
                 buffWriter.write(toWrite);
             }
-            buffWriter.close();
-        }
-        catch (FileNotFoundException exc){
-            Output.showError(exc);
-        }
-        catch (IOException e){
-            Output.showError(e);
         }
     }
 
-    public int getImportedAmmount() {
-        return importedAmmount;
-    }
+
 }

@@ -1,5 +1,7 @@
 package com.kpi.javaLabs.Model;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Service {
@@ -8,9 +10,10 @@ public class Service {
     private static FileHandler fileHandler = new FileHandler();
     private static int patientsAmmount;
 
-    public Service(){
-        Patient[] readedArray = fileHandler.importFromFile();
-        patientsAmmount = fileHandler.getImportedAmmount();
+    public Service() throws IOException {
+        Patient[] readedArray;
+        readedArray = fileHandler.importFromFile();
+        patientsAmmount = readedArray.length;
         System.arraycopy(readedArray, 0, patients, 0, patientsAmmount);
     }
 
@@ -23,8 +26,10 @@ public class Service {
         }
     }
 
-    public void exportToFile(){
-        fileHandler.exportToFile(patientsAmmount, patients);    //todo обрабатывать exception тут
+    public void exportToFile() throws IOException{
+
+        fileHandler.exportToFile(patientsAmmount, patients);
+
     }
 
     public Patient[] getPatients(){

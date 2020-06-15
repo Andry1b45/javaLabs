@@ -4,15 +4,22 @@ import com.kpi.javaLabs.Model.Service;
 import com.kpi.javaLabs.View.Input;
 import com.kpi.javaLabs.View.Output;
 
+import java.io.IOException;
+
 public class Controller {
     private Input input;
     private Output output;
-    private Service service;        //todo обработать исключения проблемы чтения файла и вывести пользователю, что проблема
+    private Service service;
 
     public Controller(){
         this.input = new Input();
         this.output = new Output();
-        this.service = new Service();
+        try{
+            this.service = new Service();
+        } catch (IOException e) {
+            output.showError(e);
+            System.exit(-1);
+        }
     }
 
     public void run(){
@@ -45,12 +52,14 @@ public class Controller {
             }
             case 5:{
                 output.showMessage("Goodbye");
-                service.exportToFile();
+                try{
+                    service.exportToFile();
+                }
+                catch(IOException e){
+                    output.showError(e);
+                }
                 System.exit(1);
-                break;
             }
-            default:
-                break;
         }
     }
 }
