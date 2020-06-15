@@ -3,16 +3,26 @@ package com.kpi.javaLabs.Controller;
 import com.kpi.javaLabs.Model.Service;
 import com.kpi.javaLabs.View.Input;
 import com.kpi.javaLabs.View.Output;
+import org.apache.log4j.Logger;
+
+import java.io.IOException;
 
 public class Controller {
     private Input input;
     private Output output;
     private Service service;
+    final static Logger logger = Logger.getLogger(Controller.class);
 
     public Controller(){
         this.input = new Input();
         this.output = new Output();
-        this.service = new Service();
+        try{
+            this.service = new Service();
+        } catch (IOException e) {
+            output.showError(e);
+            logger.error("File exception: " + e.getMessage());
+            System.exit(-1);
+        }
     }
 
     public void run(){
@@ -25,8 +35,8 @@ public class Controller {
     private void execute(int caseVariable){
         switch (caseVariable) {
             case 1:{
-                System.out.println("How much patients do you want to create?");
-                service.createPatients(input.ammountOfPatients());
+                output.showMessage("How much patients do you want to create?");
+                service.createPatients(input.getAmmountOfPatients());
                 output.showAllPatients(service.getPatients());
                 break;
             }
@@ -44,12 +54,17 @@ public class Controller {
                 break;
             }
             case 5:{
-                System.out.println("Goodbye");
+                output.showMessage("Goodbye");
+                try{
+                    service.exportToFile();
+                }
+                catch(IOException e){
+                    logger.error("File exception: " + e.getMessage());
+                    output.showError(e);
+                    System.exit(-1);
+                }
                 System.exit(1);
-                break;
             }
-            default:
-                break;
         }
     }
 }

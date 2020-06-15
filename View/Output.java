@@ -1,25 +1,23 @@
 package com.kpi.javaLabs.View;
 
 import com.kpi.javaLabs.Model.Patient;
-import com.kpi.javaLabs.Model.Service;
 
 public class Output {
 
     public void showAllPatients(Patient[] patients){
-        if(patients[0] == null){
-            System.out.println("No patients to show!");
+        System.out.println(" ___________________________________________________" +
+                    "_________________________________________________________________" +
+                    "_________________________________________________________________\n");
+        for (Patient patientCounter: patients) {
+            System.out.println(patientCounter);
+            System.out.println(" ___________________________________________________" +
+                    "_________________________________________________________________" +
+                    "_________________________________________________________________\n");
         }
-        else {
-            System.out.println("");
-            for (int i = 0; i < Service.getPatientsAmmount(); i++) {
-                if (patients[i] != null) {
-                    System.out.println(patients[i]);
-                    System.out.println("___________________________________________________" +
-                            "______________________________________________________________" +
-                            "______________________________________________________________\n");
-                }
-            }
-        }
+    }
+
+    public static void showError(Exception e){
+        System.err.println(e.getMessage());
     }
 
 
@@ -40,12 +38,9 @@ public class Output {
         System.out.println("5. Exit");
         System.out.println("Input: ");
     }
-    public static void showInputMessage(){
-        System.out.println("Input number:");
+    public void showMessage(String message){
+        System.out.println(message);
     }
 
-    public static void showError(){
-        System.out.println("Please, input again!");
-    }
 }
 
